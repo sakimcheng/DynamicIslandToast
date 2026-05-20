@@ -191,5 +191,14 @@ public final class DynamicIslandMessageView: UIView {
     paragraphStyle.lineBreakMode = .byWordWrapping
     attributedText.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: attributedText.length))
     messageLabel.attributedText = attributedText
+    setMessageLabelHeight(attributedText)
+  }
+  
+  private func setMessageLabelHeight(_ attributedString: NSAttributedString) {
+    let inset: CGFloat = 18
+    let size: CGFloat = (DynamicIslandSize.radius - inset) * 2
+    let screenWidth = UIApplication.shared.currentWindow?.bounds.width ?? 320
+    let labelWidth = screenWidth - size - inset - inset - inset - inset
+    messageLabelHeightConstraint?.constant = attributedString.getHeight(withConstrainedWidth: labelWidth)
   }
 }
