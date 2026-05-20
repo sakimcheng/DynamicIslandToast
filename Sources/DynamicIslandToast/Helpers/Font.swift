@@ -73,12 +73,3 @@ extension UIFont {
     return metrics.scaledFont(for: font)
   }
 }
-
-extension NSAttributedString {
-  static func getHeight(withConstrainedWidth width: CGFloat) -> CGFloat {
-    let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-    let boundingBox = boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, context: nil)
-
-    return ceil(boundingBox.height)
-  }
-}

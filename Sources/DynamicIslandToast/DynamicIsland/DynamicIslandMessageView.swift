@@ -197,8 +197,8 @@ public final class DynamicIslandMessageView: UIView {
   private func setMessageLabelHeight(_ attributedString: NSAttributedString) {
     let inset: CGFloat = 18
     let size: CGFloat = (DynamicIslandSize.radius - inset) * 2
-
-    let labelWidth = UIScreen.main.bounds.width - size - inset - inset - inset - inset
+    let screenWidth = UIApplication.shared.currentWindow?.bounds.width ?? 320
+    let labelWidth = screenWidth - size - inset - inset - inset - inset
     messageLabelHeightConstraint?.constant = attributedString.getHeight(withConstrainedWidth: labelWidth)
   }
 }
